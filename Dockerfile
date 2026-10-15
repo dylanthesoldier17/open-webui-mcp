@@ -13,14 +13,13 @@ RUN apt-get update && apt-get install -y \
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 ENV PATH="/root/.local/bin:${PATH}"
 
+# Copy app into container
 COPY / /app
 
 WORKDIR /app
 
 # Install dependencies
 RUN uv sync --no-dev
-
-# RUN cp .env.example .env
 
 # Runtime configuration
 ENV HOST=0.0.0.0
